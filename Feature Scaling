@@ -1,0 +1,23 @@
+like standardization and normalization using Python/R to numerical features of below dataset.
+
+import pandas as pd
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+
+data = {
+    'Mileage': [63512, 95135, 75006, 69847, 87278, 138789, 89073, 109231, 87675, 34853, 58173],
+    'Sell Price': [4000, 2500, 45000, 3826, 2224, 2723, 3950, 4959, 3791, 4349, 4252]
+}
+df = pd.DataFrame(data)
+
+
+std_scaler = StandardScaler()
+df_std = pd.DataFrame(std_scaler.fit_transform(df), columns=['Mileage_Std', 'Price_Std'])
+
+
+min_max_scaler = MinMaxScaler()
+df_norm = pd.DataFrame(min_max_scaler.fit_transform(df), columns=['Mileage_Norm', 'Price_Norm'])
+
+
+result = pd.concat([df, df_std, df_norm], axis=1)
+print(result.head())
+
