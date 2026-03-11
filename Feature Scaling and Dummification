@@ -1,0 +1,60 @@
+• Apply feature-scaling techniques like standardization and normalization to numerical
+features
+
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import Normalizer
+from sklearn.preprocessing import StandardScaler
+
+df = pd.read_csv("housing.csv")
+df.head()
+
+df = df.select_dtypes(include=np.number)
+df.head()
+
+scaler = MinMaxScaler()
+scaled_data = scaler.fit_transform(df)
+scaled_df = pd.DataFrame(scaled_data, columns = df.columns)
+scaled_df.head()
+
+
+scaler = Normalizer()
+scaled_data = scaler.fit_transform(df)
+scaled_df = pd.DataFrame(scaled_data, columns = df.columns)
+scaled_df.head()
+
+
+scaler = StandardScaler()
+scaled_data = scaler.fit_transform(df)
+scaled_df = pd.DataFrame(scaled_data, columns = df.columns)
+scaled_df.head()
+
+B.Perform feature dummification to convert categorical variables into
+numerical representation.
+In this, we are using the dataset “iris.csv”
+
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+
+df = pd.read_csv("iris.csv")
+df.head()
+
+
+df.info()
+
+df.isnull().sum()
+
+df['species'].value_counts()
+
+le = LabelEncoder()
+df['Species_Label'] = le.fit_transform(df['species'])
+df.head()
+
+
+le.classes_
+mapping = dict(zip(le.classes_, le.transform(le.classes_)))
+print(mapping)
+
+
