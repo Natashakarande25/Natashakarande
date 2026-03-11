@@ -1,0 +1,101 @@
+Order_ID,Region,Category,Sales,Profit,Discount,Quantity
+1,Central,Technology,2620,562,0.4,9
+2,North,Furniture,708,1091,0.5,2
+3,West,Technology,1207,1091,0.2,1
+4,South,Office Supplies,2984,19,0.1,1
+5,North,Technology,1987,319,0.2,5
+6,West,Office Supplies,2155,360,0.1,9
+7,East,Furniture,1899,1162,0.1,3
+8,West,Office Supplies,1829,1359,0.4,8
+9,North,Furniture,3744,1074,0.4,3
+10,East,Furniture,4040,32,0.4,7
+11,Central,Technology,4440,1246,0.5,5
+12,West,Office Supplies,567,1434,0.1,9
+13,Central,Furniture,2831,751,0.4,6
+14,North,Furniture,1480,1291,0.5,3
+15,Central,Technology,3111,1267,0.4,5
+16,West,Office Supplies,2031,31,0.4,9
+17,Central,Furniture,2839,342,0.4,6
+18,East,Furniture,1625,318,0.4,6
+19,South,Technology,548,919,0.1,1
+20,West,Office Supplies,2142,498,0.4,9
+21,West,Technology,3998,572,0.5,4
+22,West,Furniture,1044,1353,0.5,7
+23,Central,Technology,3590,1131,0.4,1
+24,Central,Furniture,4791,788,0.5,2
+25,North,Furniture,3975,410,0.5,5
+26,East,Office Supplies,717,833,0.0,3
+27,West,Technology,2923,99,0.1,8
+28,West,Technology,1749,1290,0.0,2
+29,North,Office Supplies,2871,115,0.4,2
+30,West,Furniture,2890,328,0.0,1
+31,West,Furniture,1731,563,0.4,6
+32,East,Office Supplies,4290,819,0.4,1
+33,South,Furniture,4060,433,0.2,6
+34,West,Technology,3460,1068,0.1,3
+35,West,Office Supplies,1435,907,0.2,8
+36,Central,Furniture,2922,140,0.4,8
+37,South,Furniture,4329,509,0.2,6
+38,East,Technology,2509,271,0.1,5
+39,South,Office Supplies,3703,895,0.4,1
+40,East,Office Supplies,4044,303,0.4,1
+41,Central,Furniture,4694,1232,0.2,3
+42,Central,Technology,1685,1393,0.4,7
+43,South,Office Supplies,2678,651,0.0,4
+44,Central,Furniture,1577,-120,0.2,9
+45,East,Office Supplies,703,322,0.5,7
+46,West,Furniture,3998,-121,0.0,1
+47,South,Technology,1890,478,0.4,6
+48,East,Technology,3391,886,0.1,4
+49,West,Technology,4481,1134,0.5,5
+50,West,Technology,1912,1217,0.4,3
+51,South,Technology,2990,1475,0.4,7
+52,West,Furniture,1023,173,0.5,3
+53,East,Furniture,3684,549,0.4,9
+54,North,Office Supplies,1457,493,0.0,6
+55,Central,Office Supplies,3999,721,0.4,5
+56,West,Furniture,3607,-186,0.1,7
+57,South,Office Supplies,3081,-95,0.4,1
+58,West,Technology,1050,650,0.4,6
+59,Central,Office Supplies,2496,-138,0.5,2
+60,West,Technology,3110,677,0.4,6
+61,West,Furniture,2213,1031,0.5,6
+62,East,Furniture,1702,998,0.5,7
+63,Central,Furniture,4997,1393,0.0,4
+64,South,Technology,807,511,0.2,3
+65,North,Office Supplies,2326,877,0.4,5
+66,South,Furniture,4322,-7,0.5,1
+67,West,Furniture,574,523,0.4,3
+68,West,Technology,4733,945,0.0,1
+69,North,Technology,1079,113,0.4,3
+70,North,Furniture,793,205,0.2,5
+71,West,Technology,1567,432,0.0,9
+72,West,Furniture,2949,303,0.1,8
+73,North,Technology,1937,274,0.5,6
+74,East,Office Supplies,2667,1147,0.4,9
+75,Central,Furniture,2560,1300,0.0,8
+76,North,Office Supplies,3719,652,0.5,1
+77,East,Furniture,2452,821,0.0,9
+78,Central,Furniture,737,303,0.1,5
+79,North,Office Supplies,1582,1042,0.1,3
+80,Central,Technology,813,424,0.1,5
+81,Central,Technology,3251,1049,0.0,7
+82,Central,Technology,3082,446,0.2,6
+83,Central,Technology,2059,132,0.4,4
+84,Central,Technology,4694,176,0.0,2
+85,East,Technology,4248,1060,0.1,4
+86,North,Furniture,2122,444,0.0,1
+87,East,Technology,2476,1376,0.4,2
+88,Central,Technology,3773,510,0.5,2
+89,South,Furniture,730,883,0.4,8
+90,South,Technology,2401,638,0.4,9
+91,South,Furniture,2092,100,0.4,3
+92,North,Furniture,1199,1424,0.4,5
+93,South,Technology,1648,1149,0.1,9
+94,North,Office Supplies,2078,-192,0.2,4
+95,West,Technology,1379,1487,0.0,9
+96,East,Furniture,1129,60,0.1,9
+97,East,Furniture,661,1266,0.0,8
+98,Central,Technology,3514,-30,0.4,7
+99,East,Furniture,3514,403,0.0,4
+100,East,Office Supplies,3856,857,0.2,2
