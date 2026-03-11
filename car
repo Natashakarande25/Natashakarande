@@ -1,0 +1,48 @@
+A. Create the CSV File & Display records with Sell Price > 4000
+
+import pandas as pd
+
+data = {
+    'Make': ['Honda', 'Honda', 'Toyota', 'Nissan', 'Toyota', 'Honda', 'Ford', 'Chevrolet', 'Chevrolet', 'Dodge', 'Dodge'],
+    'Model': ['Accord', 'Accord', 'Camry', 'Altima', 'Corolla', 'Civic', 'F-150', 'Silverado', 'Impala', 'Charger', 'Charger'],
+    'Color': ['Red', 'Blue', 'Green', 'Black', 'Green', 'White', 'Black', 'Green', 'Silver', 'Silver', 'Silver'],
+    'Mileage': [63512, 95135, 75000, 69847, 87278, 138789, 89073, 109231, 87675, 34853, 58173],
+    'Sell Price': [4000, 2500, 45000, 3820, 2224, 2723, 3950, 4050, 3791, 3500, 4252],
+    'Buy Price': [3000, 2000, 44000, 3000, 2100, 1900, 3000, 4500, 3500, 3500, 4000]
+}
+
+
+df_initial = pd.DataFrame(data)
+df_initial.to_csv('cars_data.csv', index=False)
+print("File 'cars_data.csv' created successfully!")
+  
+
+  
+df = pd.read_csv('cars_data.csv')
+
+  
+
+print("\n--- Original Data Frame ---")
+print(df.head())
+
+
+high_value_cars = df[df['Sell Price'] > 4000]
+
+print("\n--- Cars with Sell Price > 4000 ---")
+print(high_value_cars)
+
+
+B: Sort the car data in ascending order
+
+
+df_sorted = df.sort_values(by='Make', ascending=True)
+print("\n--- Car Data Sorted Ascending (by Make) ---")
+print(df_sorted)
+
+
+ C: Group the data according to the "Make" of car
+
+grouped_make = df.groupby('Make')['Sell Price'].mean()
+print("\n--- Average Sell Price by Make ---")
+print(grouped_make)
+
