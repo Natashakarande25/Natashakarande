@@ -1,0 +1,38 @@
+Load the Iris dataset. Perform Principal component Analysis (PCA) using Python/R on a dataset to reduce dimensionality. 
+Select appropriate number of principle components.
+Visualize the data in the reduced-dimensional space. [20]
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+
+df = pd.read_csv('iris.csv')
+
+X = df.iloc[:, :-1]  
+y = df.iloc[:, -1] 
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+pca_temp = PCA()
+pca_temp.fit(X_scaled)
+var_ratio = pca_temp.explained_variance_ratio_
+print(f"Explained Variance by each component: {var_ratio}")
+print(f"Total variance captured by first 2 components: {sum(var_ratio[:2])*100:.2f}%")
+
+
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_scaled)
+
+pca_df = pd.DataFrame(data = X_pca, columns = ['PC1', 'PC2'])
+pca_df['Target'] = y
+
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='PC1', y='PC2', hue='Target', data=pca_df, palette='viridis', s=100)
+plt.title('PCA of Iris Dataset (Reduced to 2D)')
+plt.xlabel(f'Principal Component 1 ({var_ratio[0]*100:.1f}%)')
+plt.ylabel(f'Principal Component 2 ({var_ratio[1]*100:.1f}%)')
+plt.grid(True)
+plt.show()
