@@ -1,0 +1,65 @@
+• Perform PCA on a dataset to reduce dimensionality.
+• Evaluate the explained variance and select the appropriate number of principal
+components.
+• Visualize the data in the reduced-dimensional space
+We are using iris.csv
+
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import os
+
+
+df = pd.read_csv("iris.csv")
+print(df.head())
+x = df.drop(['species'], axis = 1) 
+y = df.species.replace({'Setosa' : 1 , 'Versicolor' : 2 , 'Virginica' : 3})
+print(x.head())
+
+
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+X = scaler.fit_transform(x)
+
+
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.3, random_state = 20, stratify = y)
+knn = KNeighborsClassifier(7)
+knn.fit(x_train, y_train)
+print("Train score before PCA", knn.score(x_train, y_train), "%")
+print("Test score before PCA", knn.score(x_test, y_test), "%")
+
+
+
+pca = PCA()
+x_new = pca.fit_transform(x)
+print("Covariance Matrix:\n", pca.get_covariance())
+explained_variance = pca.explained_variance_ratio_
+print("Explained Variance Ratio:", explained_variance)
+plt.figure(figsize=(6, 4))
+plt.bar(range(len(explained_variance)), explained_variance, alpha=0.5, align='center', label="Individual explained variance")
+plt.ylabel('Explained variance ratio')
+plt.xlabel('Principal Components')
+plt.legend(loc='best')
+plt.tight_layout()
+plt.show()
+pca = PCA(n_components=3)
+x_new = pca.fit_transform(x)
+plt.figure(figsize=(8, 6))
+plt.scatter(x_new[:, 0], x_new[:, 1], c=pd.Series(y).astype('category').cat.codes, cmap='viridis')
+plt.xlabel('PC1')
+plt.ylabel('PC2')
+plt.title('PCA: First two Principal Components')
+plt.colorbar(label='Species Group')
+plt.show()
+
+
+x_train_new, x_test_new, y_train, y_test = train_test_split(x_new, y, test_size = 0.3, random_state = 20, stratify = y)
+knn_pca = KNeighborsClassifier(7)
+knn_pca.fit(x_train_new, y_train)
+print("Train score after PCA", knn_pca.score(x_train_new, y_train), "%")
+print("Train score after PCA", knn_pca.score(x_test_new, y_test), "%")
