@@ -43,4 +43,130 @@ data = {
 df =pd.DataFrame(data)
 print(df)
 
-df = pd.read_csv(r"‪data.csv")
+df = pd.read_csv(r"C:\Users\User\Downloads\DS\data.csv")
+print(df.columns)
+print(df.info())
+print(df.head())
+df.shape
+
+from sklearn.preprocessing import OneHotEncoder
+
+categorical_column = df.select_dtypes(include=['object']).columns.tolist()
+
+encoder = OneHotEncoder(sparse_output=False)
+
+one_hot_df = pd.DataFrame(one_hot_encoded, columns=encoder.get_feature_names_out(categorical_column))
+
+df_encoded = pd.concat([df, one_hot_df], axis=1)
+
+df_encoded = df_encoded.drop(categorical_column, axis=1)
+
+df_encoded
+
+B. Perform basic data pre-processing tasks such as handling missing values and
+outliers.
+i. Handling Missing Values
+
+
+import pandas as pd
+
+df = {
+    'Job Posisition': ['CEO', 'Senior Manager', 'Junior Manager', 'Employee', 'Assistant Staff'],
+    'Years of Experience': [5, 4, 3, None, 1],
+    'Salary': [100000, 80000, None, 40000, 20000]
+}
+
+df = pd.DataFrame(df)
+print(df)
+
+df['Years of Experience'] = df['Years of Experience'].fillna(df['Years of Experience'].mean())
+df['Salary'] = df['Salary'].fillna(df['Salary'].mean())
+print(df.head())
+
+ii. Outliers
+In this, we are using the dataset “wine.csv”
+
+df = pd.read_csv(r"C:\Users\User\Downloads\DS\wine.csv")
+import matplotlib.pyplot as plt
+import seaborn as sns
+df.head()
+
+df.info()
+
+df.isnull().sum()
+
+for col in df.select_dtypes(include = ['float64' , 'int64']).columns:
+    plt.figure(figsize=(6,4))
+    sns.boxplot(x=df[col])
+    plt.title(f"Box of {col}")
+    plt.show()
+
+numeric_cols = df.select_dtypes(include = ['float64' , 'int64']).columns
+numeric_cols
+outlier_bounds = {}
+
+for col in numeric_cols :
+    Q1 = df[col].quantile(0.25)
+    Q3 = df[col].quantile(0.75)
+    IQR = Q3 - Q1
+    lower_whisker = Q1 - 1.5 * IQR
+    upper_whisker = Q3 + 1.5 * IQR
+    outlier_bounds[col]=(lower_whisker, upper_whisker)
+
+outlier_bounds
+
+for col in numeric_cols:
+    lw, uw = outlier_bounds[col]
+    outliers = df[(df[col] < lw) | (df[col] > uw)][col].count()
+    print(f"After capping {col} : {outliers} outliers")
+
+
+
+C. Manipulate and transform data using functions like filtering, sorting,
+and grouping.
+In this, we are using the dataset “housing.csv”
+
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv(r"C:\Users\User\Downloads\DS\housing.csv")
+print(df.head())
+df.columns
+
+filtered_price = df[df['price'] > 5000000]
+filtered_price.head()
+
+filtered_multi = df[(df['price'] > 3000000) & (df['area'] > 5000)]
+filtered_multi.head()
+
+
+house_price = df.sort_values('price', ascending = False)
+print(house_price.head())
+
+
+new_df = df.sort_values(['price', 'area'], ascending = [True, False])
+print(new_df.head())
+
+print(df.groupby('bedrooms')['area'].max())
+print(df.groupby('bedrooms')['price'].max())
+df['parking'].value_counts()
+
+
+df['Price_Category'] = pd.cut(df['price'], bins=[0, 1750000, 5000000, 13300000], labels=['Low', 'Medium', 'High'])
+df.head()
+
+
+df['bed_and_bath'] = df['bedrooms'] + df['bathrooms']
+print(df.head())
+print(df.shape)
+
+
+max_value = df['price'].max()
+print(max_value)
+
+min_value = df['price'].min()
+print(min_value)
+
+df.tail()
+
+
