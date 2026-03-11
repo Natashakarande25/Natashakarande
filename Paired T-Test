@@ -1,0 +1,33 @@
+to determine if there is a significant difference in the mean Test scores before and after remedial lectures. 
+Formulate Null and Alternative Hypothesis for a given problem. Interpret results and draw conclusions based on test outcome
+
+import scipy.stats as stats
+import pandas as pd
+
+test1_before = [85, 68, 67, 84, 98, 60, 94, 80, 94, 98, 95, 80, 85, 87, 75]
+test2_after = [70, 90, 80, 89, 88, 86, 78, 87, 90, 86, 92, 94, 99, 93, 86]
+
+
+print("--- Hypothesis Testing: Paired T-Test ---")
+print("H0: The remedial lectures had no effect on student scores.")
+print("H1: The remedial lectures significantly changed student scores.\n")
+
+
+t_statistic, p_value = stats.ttest_rel(test1_before, test2_after)
+print(f"Calculated T-Statistic: {t_statistic:.4f}")
+print(f"Calculated P-Value: {p_value:.4f}")
+
+alpha = 0.05
+
+
+print("\n--- Conclusion ---")
+if p_value < alpha:
+    print(f"Since P-value ({p_value:.4f}) < Alpha (0.05):")
+    print("RESULT: REJECT the Null Hypothesis (H0).")
+    print("CONCLUSION: There is a statistically significant difference in test scores.")
+    print("The department's claim that performance improved is statistically supported.")
+else:
+    print(f"Since P-value ({p_value:.4f}) > Alpha (0.05):")
+    print("RESULT: FAIL TO REJECT the Null Hypothesis (H0).")
+    print("CONCLUSION: There is no significant difference in scores.")
+    print("The remedial lectures did not result in a statistically significant change.")
