@@ -1,0 +1,36 @@
+A.Perform one-way ANOVA to compare means across multiple groups
+
+import numpy as np
+import pandas as pd
+from scipy import stats
+from statsmodels.stats.multicomp import pairwise_tukeyhsd
+
+group_A = [85,88,98,92,86]
+group_B = [78,82,88,79,81]
+group_C = [90,92,94,91,93]
+
+f_statistic,p_value=stats.f_oneway (group_A, group_B, group_C)
+
+
+if p_value<0.05:
+    print("Result:Siginficant difference between group means")
+else:
+    print("Result: no sigificant diffrence btw group menas")
+
+B. Perform one-way ANOVA to compare means across multiple groups
+
+scores = group_A+group_B+group_C
+
+groups=(['Group_A']*len (group_A)+['Group_B']*len (group_B)+['Group_C']*len (group_C))
+
+data=pd.DataFrame ({'Score': scores, 'Group': groups})
+print(data)
+
+tukey_test=pairwise_tukeyhsd(
+endog=data['Score'],
+groups=data ['Group'], 
+alpha=0.05
+)
+print(tukey_test)
+
+
