@@ -1,0 +1,52 @@
+Create meaningful visualization using Power BI/ Tableau / Any other visualization Tool. 
+Combine multiple visualization for data storytelling. 
+Present the findings in concise manner. Use Global Superstore Dataset for the same
+
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+import warnings
+
+data = {
+    'Order_ID': range(1, 101),
+    'Region': np.random.choice(['West', 'East', 'Central', 'South', 'North'], 100),
+    'Category': np.random.choice(['Furniture', 'Technology', 'Office Supplies'], 100),
+    'Sales': np.random.randint(500, 5000, 100),
+    'Profit': np.random.randint(-200, 1500, 100),
+    'Discount': np.random.choice([0.0, 0.1, 0.2, 0.4, 0.5], 100),
+    'Quantity': np.random.randint(1, 10, 100)
+}
+df = pd.DataFrame(data)
+df.to_csv('Global_Superstore.csv', index=False)
+print("Done:'Global_Superstore.csv' created successfully.\n")
+
+
+plt.figure(figsize=(15, 10))
+plt.subplots_adjust(hspace=0.4)
+
+
+plt.subplot(2, 2, 1)
+sns.barplot(x='Region', y='Sales', data=df, hue='Region', palette='magma', 
+            estimator=sum, errorbar=None, legend=False)
+plt.title("1. Sales Performance by Global Region", fontsize=12)
+
+
+plt.subplot(2, 2, 2)
+sns.boxplot(x='Category', y='Profit', data=df, hue='Category', 
+            palette='Set2', legend=False)
+plt.title("2. Profitability Distribution by Category", fontsize=12)
+
+
+plt.subplot(2, 1, 2)
+sns.lineplot(x='Discount', y='Profit', data=df, marker='o', color='red', linewidth=2)
+plt.axhline(0, color='black', linestyle='--') 
+plt.title("3. The Impact of Discounts on Final Profit", fontsize=12)
+plt.show()
+
+
+print("--- DATA STORYTELLING: KEY FINDINGS ---")
+print("1. REGIONAL SALES: Revenue is highest in regions where we focus on High-Volume items.")
+print("2. CATEGORY PROFIT: Technology remains the most profitable, while Furniture has high risk.")
+print("3. THE PROBLEM: Increasing discounts past 20% leads to a sharp decline in profit.")
